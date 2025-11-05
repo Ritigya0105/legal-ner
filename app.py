@@ -3,12 +3,6 @@ import spacy
 from spacy import displacy
 import urllib
 import pandas as pd
-import spacy
-from spacy.cli import download
-try:
-    spacy.load("en_core_web_sm")
-except OSError:
-    download("en_core_web_sm")
 
 # --- Load spaCy model once ---
 @st.cache_resource
@@ -67,3 +61,4 @@ if st.button("🔍 Extract Entities"):
         # --- Download as CSV ---
         csv = pd.DataFrame(ent_data).to_csv(index=False).encode('utf-8')
         st.download_button("📥 Download Entities as CSV", csv, "entities.csv", "text/csv")
+
